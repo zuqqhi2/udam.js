@@ -5,32 +5,10 @@ http://pegjs.majda.cz/online
 output statement
 ----------------
     Normal
-<<<<<<< HEAD
     [do something]
 
     Processes
     [do something]---[do something arg1]
-
-if statement
-----------------
-    Normal If
-    <hasAccount>Y---[follow the_account]
-    N
-    |
-    |
-    [Goodbye]
-
-    Nest
-    <hasTwitterAccount>Y---[follow twitter_account]
-    N
-    |
-    |
-    <hasFacebookAccount>Y-----[request friend facebook_account]
-=======
-    [output something]
-
-    Processes
-    [output ichibaItem]----[output travelItem]
 
 if statement
 ----------------
@@ -46,16 +24,11 @@ if statement
     N
     |
     |
-    <hasIchibaBrowsingHistory>Y-----[output ichiba_item]
->>>>>>> f1827e9667031f1adad9de67c074b33da6cf23da
+    <hasFacebookAccount>Y-----[request friend facebook_account]
     N
     |
     |
     |
     |
     |
-<<<<<<< HEAD
     [Goodbye]
-=======
-    [output other_item]
->>>>>>> f1827e9667031f1adad9de67c074b33da6cf23da
