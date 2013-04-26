@@ -4,13 +4,31 @@ http://pegjs.majda.cz/online
 
 output statement
 ----------------
-    [output something]
+    Normal
+    [do something]
 
+    Processes
+    [do something]---[do something arg1]
 
 if statement
 ----------------
-    [if hastravelitem]Y---[output travel]
+    Normal If
+    <hasAccount>Y---[follow the_account]
     N
     |
     |
-    [output ichiba]
+    [Goodbye]
+
+    Nest
+    <hasTwitterAccount>Y---[follow twitter_account]
+    N
+    |
+    |
+    <hasFacebookAccount>Y-----[request friend facebook_account]
+    N
+    |
+    |
+    |
+    |
+    |
+    [Goodbye]
