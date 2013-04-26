@@ -4,13 +4,31 @@ http://pegjs.majda.cz/online
 
 output statement
 ----------------
+    Normal
     [output something]
 
+    Processes
+    [output ichibaItem]----[output travelItem]
 
 if statement
 ----------------
-    [if hastravelitem]Y---[output travel]
+    Normal
+    <hastravelitem>Y---[output travel]
     N
     |
     |
     [output ichiba]
+
+    Nest
+    <hasTravelBrowsingHistory>Y---[output travel_item]
+    N
+    |
+    |
+    <hasIchibaBrowsingHistory>Y-----[output ichiba_item]
+    N
+    |
+    |
+    |
+    |
+    |
+    [output other_item]
