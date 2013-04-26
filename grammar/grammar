@@ -8,7 +8,11 @@ proc_statement = proc_factor tree branch_symbol*
 proc_factor    = '[' proc_expression ']'
 if_factor      = '<' if_expression '>'
 
+<<<<<<< HEAD
+proc_expression= element+ (' ' element+)*
+=======
 proc_expression= process (' ') element+
+>>>>>>> f1827e9667031f1adad9de67c074b33da6cf23da
 if_expression  = element+
 
 process        = 'output'
