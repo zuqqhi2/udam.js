@@ -20,7 +20,7 @@ if statement
     [goodbye]
 
     Nest
-    <hasTravelBrowsingHistory>Y---[output travel_item]
+    <hasTwitterAccount>Y---[follow twitter_account]
     N
     |
     |
