@@ -2,7 +2,8 @@
     "name": "udam.js"
     , "version": "0.0.1"
     , "dependencies": {
-        "coffee-script": "*",
+        "iced-coffee-script": "*",
+        "jquery": "*",
         "pegjs": "*"
     }
 }
