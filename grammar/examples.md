@@ -32,3 +32,17 @@ if statement
     |
     |
     [Goodbye]
+
+    Nest2
+    <hasTwitterAccount zuqqhi2>Y---[follow twitter_account]---[submit comment,hello]
+    N
+    |
+    |
+    <hasFacebookAccount zuqqhi2>Y-----[request friend,facebook_account]
+    N
+    |
+    |
+    |
+    |
+    |
+    [Goodbye]

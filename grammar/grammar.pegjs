@@ -2,23 +2,20 @@ start
 = tree
 
 tree
-= node:node? { return node; }
-
-node
-= stat:statement { return stat; }
+= stat:statement? { return stat; }
 
 statement
 = stat:if_statement { return stat.toString(); }
 / stat:proc_statement { return stat.toString(); }
 
 if_statement
-= if_factor 'Y' edge branch1:proc_factor '\n'
-  'N' '\n' edge branch2:statement
-  { return 'if\n\t' + branch1 + '\nelse\n' + branch2; }
+= if_factor 'Y' edge branch1:proc_statement '\n'
+            'N' '\n' edge branch2:statement
+            { return 'if\n\t' + branch1 + '\nelse\n' + branch2; }
 
 proc_statement
-= proc_factor tree
-/ proc_factor tree edge
+= fac1:proc_factor [-|]+ fac2:proc_statement { return fac1 + ',' + fac2; }
+/ factor:proc_factor { return factor; }
 
 proc_factor
 = '[' procexp:expression ']' { return procexp; }
