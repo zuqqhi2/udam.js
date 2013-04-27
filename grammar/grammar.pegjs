@@ -1,19 +1,37 @@
-tree           = node*
-node           = statement
-statement      = if_statement / proc_statement
+start
+= tree
 
-if_statement   = if_factor 'Y' branch_symbol+ proc_factor end_of_line 'N' end_of_line branch_symbol+ statement
-proc_statement = proc_factor tree branch_symbol*
+tree
+= node*
 
-proc_factor    = '[' proc_expression ']'
-if_factor      = '<' if_expression '>'
+node
+= statement
 
-proc_expression= element+ (' ' element+)*
-if_expression  = element+
+statement
+= if_statement 
+/ proc_statement
 
-process        = 'output'
-element        = character / digit / '-' / '_'
-character      = ( 'a' / 'b' / 'c' / 'd' / 'e' / 'f' / 'g' / 'h' / 'i' / 'j' / 'k' / 'l' / 'm' / 'n' / 'o' / 'p' / 'q' / 'r' / 's' / 't' / 'u' / 'v' / 'w' / 'x' / 'y' / 'Z' / 'A' / 'B' / 'C' / 'D' / 'E' / 'F' / 'G' / 'H' / 'I' / 'J' / 'K' / 'L' / 'M' / 'N' / 'O' / 'P' / 'Q' / 'R' / 'S' / 'T' / 'U' / 'V' / 'W' / 'X' / 'Y' / 'Z')
-digit          = ( '0' / '1' / '2' / '3' / '4' / '5' / '6' / '7' / '8' / '9' ) 
-branch_symbol  = ( '|' / '-' / end_of_line)
-end_of_line    = ( '\n' )
+if_statement
+= if_factor 'Y' edge branch1:proc_factor '\n' 'N' '\n' edge branch2:statement { return ['if',branch1,'else',branch2]; }
+
+proc_statement
+= proc_factor tree
+/ proc_factor tree edge
+
+proc_factor
+= '[' procexp:proc_expression ']' { return procexp; }
+if_factor
+= '<' ifexp:if_expression '>' { return ifexp; }
+
+proc_expression
+= element (' ' element)*
+
+if_expression
+= element
+
+element
+= characters:[a-zA-Z0-9-_]+ { return characters.join('') }
+
+edge
+= symbols:[-|\n]+ { return symbols.join('') }
+
