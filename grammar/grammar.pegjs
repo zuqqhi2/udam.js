@@ -9,9 +9,11 @@ statement
 / stat:proc_statement { return stat.toString(); }
 
 if_statement
-= if_factor 'Y' edge branch1:proc_statement '\n'
-            'N' '\n' edge branch2:statement
-            { return 'if\n\t' + branch1 + '\nelse\n' + branch2; }
+ = if_factor 'Y' edge branch1:proc_statement '\n'
+             'N' '\n' edge branch2:statement
+   { return branch2.toString().match(/if/) ?
+     'if\n\t' + branch1 + '\nelse ' + branch2
+     : 'if\n\t' + branch1 + '\nelse\n\t' + branch2;}
 
 proc_statement
 = fac1:proc_factor [-|]+ fac2:proc_statement { return fac1 + ',' + fac2; }
