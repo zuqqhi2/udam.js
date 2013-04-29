@@ -1,0 +1,31 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<script src="/js/parser.js"></script>
+		<script src="/conf/account.js"></script>
+		<script src="/conf/config.js"></script>
+		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+		<!-- Modules -->
+		<script src="/js/account_check.js"></script>
+		<script src="/js/twitter.js"></script>
+		<script src="/js/youtube.js"></script>
+		
+		<script type="text/javascript">
+		function execute_code(id) {	
+			var keyword = "tin whistle";
+			var code = parser.parse(config);
+			eval(code);
+		}
+		</script>
+		
+	</head>
+	<body>
+		<div id="sidebar">
+			<button value="zuqqhi2" onclick="execute_code('zuqqhi2')">zuqqhi2</button>
+			<button value="hyde" onclick="execute_code('hyde')">hyde</button>
+			<button value="hidetomo" onclick="execute_code('hidetomo')">hidetomo</button>
+			<div class="userTweet"></div>
+			<div id="yt_view"></div>
+		</div>
+	</body>
+</html>
