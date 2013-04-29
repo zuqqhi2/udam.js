@@ -9,15 +9,15 @@ statement
 / stat:proc_statement { return stat.toString(); }
 
 if_statement
- = if_factor 'Y' edge branch1:proc_statement '\n'
-             'N' '\n' edge branch2:statement
-   { return branch2.toString().match(/if/) ?
-     'if\n\t' + branch1 + '\nelse ' + branch2
-     : 'if\n\t' + branch1 + '\nelse\n\t' + branch2;}
+= fac:if_factor 'Y' edge branch1:proc_statement '\n'
+'N' '\n' edge branch2:statement
+{ return branch2.toString().match(/if/) ?
+"if (" + fac + ")\n\t" + branch1 + '\nelse ' + branch2
+: 'if (' + fac + ')\n\t' + branch1 + '\nelse\n\t' + branch2;}
 
 proc_statement
-= fac1:proc_factor [-|]+ fac2:proc_statement { return fac1 + ',' + fac2; }
-/ factor:proc_factor { return factor; }
+= fac1:proc_factor [-|]+ fac2:proc_statement { return fac1 + '.then(' + fac2.slice(0,fac2.length-1) + ');'; }
+/ factor:proc_factor { return factor + ';'; }
 
 proc_factor
 = '[' procexp:expression ']' { return procexp; }
@@ -33,7 +33,7 @@ arguments
 / elem:element { return elem.toString(); }
 
 element
-= characters:[a-zA-Z0-9-_]+ { return characters.join('') }
+= characters:[a-zA-Z0-9-_."]+ { return characters.join('') }
 
 edge
 = symbols:[-|\n]+ { return symbols.join('') }

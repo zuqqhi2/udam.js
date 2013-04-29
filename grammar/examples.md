@@ -46,3 +46,17 @@ if statement
     |
     |
     [Goodbye]
+
+    Demo
+    <hasTwitterAccount id>Y---[getTweet id]---[outputTweets]
+    N
+    |
+    |
+    <hasYoutubeAccount id>Y-----[youtube_search keyword,30]
+    N
+    |
+    |
+    |
+    |
+    |
+    [alert "nothing"]
